@@ -85,8 +85,16 @@ public class FilterVideo : IServerEntryPoint
     public Task RunAsync()
     {
         _logger.LogDebug("Hello World!");
+        DoTheFiltering(null, EventArgs.Empty);
         return Task.CompletedTask;
     }
+
+    // Modifed from the PlaybackTimer_Elapsed method in the AutoSkip class (Intro Skipper)
+    private void DoTheFiltering(object? sender, EventArgs e)
+    {
+        _logger.LogDebug("Start DoTheFiltering method");
+    }
+
     /// <summary>
     /// Dispose.
     /// </summary>
@@ -107,5 +115,3 @@ public class FilterVideo : IServerEntryPoint
         }
     }
 }
-
-// Remember to Credit Intro Skipper by ConfusedPolarBear on Github
