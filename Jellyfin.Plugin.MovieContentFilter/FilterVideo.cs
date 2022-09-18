@@ -68,13 +68,17 @@ namespace Jellyfin.Plugin.MovieContentFilter;
 /// </summary>
 public class FilterVideo : IServerEntryPoint
 {
+    private ISessionManager _sessionManager;
+    private System.Timers.Timer _playbackTimer = new(1000);
     private ILogger<FilterVideo> _logger;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="FilterVideo"/> class.
     /// </summary>
+    /// <param name="sessionManager">Session manager.</param>
     /// <param name="logger">Logger.</param>
-    public FilterVideo(ILogger<FilterVideo> logger) {
+    public FilterVideo(ISessionManager sessionManager, ILogger<FilterVideo> logger) {
+        _sessionManager = sessionManager;
         _logger = logger;
     }
 
@@ -85,7 +89,8 @@ public class FilterVideo : IServerEntryPoint
     public Task RunAsync()
     {
         _logger.LogDebug("Hello World!");
-        DoTheFiltering(null, EventArgs.Empty);
+        _playbackTimer.Elapsed += DoTheFiltering;
+        //_logger.LogDebug("Session count: " + _sessionManager.Sessions.ToList().Count()); // returns 0
         return Task.CompletedTask;
     }
 
@@ -93,6 +98,14 @@ public class FilterVideo : IServerEntryPoint
     private void DoTheFiltering(object? sender, EventArgs e)
     {
         _logger.LogDebug("Start DoTheFiltering method");
+        foreach (var session in _sessionManager.Sessions)
+        {
+            var sessionString = session.ToString();
+            _logger.LogDebug("sessionString: {0}", sessionString);
+            
+            var position = session.PlayState.PositionTicks / TimeSpan.TicksPerSecond;
+            _logger.LogTrace("Playback position is {Position}", position);
+        }
     }
 
     /// <summary>
@@ -113,5 +126,8 @@ public class FilterVideo : IServerEntryPoint
         {
             return;
         }
+
+        _playbackTimer.Stop();
+        _playbackTimer.Dispose();
     }
 }
