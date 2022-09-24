@@ -90,6 +90,7 @@ public class FilterVideo : IServerEntryPoint
     {
         _logger.LogDebug("Hello World!");
         _playbackTimer.Elapsed += DoTheFiltering;
+        _playbackTimer.Enabled = true;
         //_logger.LogDebug("Session count: " + _sessionManager.Sessions.ToList().Count()); // returns 0
         return Task.CompletedTask;
     }
