@@ -98,14 +98,16 @@ public class FilterVideo : IServerEntryPoint
     // Modifed from the PlaybackTimer_Elapsed method in the AutoSkip class (Intro Skipper)
     private void DoTheFiltering(object? sender, EventArgs e)
     {
-        _logger.LogDebug("Start DoTheFiltering method");
+        // _logger.LogDebug("Start DoTheFiltering method");
         foreach (var session in _sessionManager.Sessions)
         {
-            var sessionString = session.ToString();
-            _logger.LogDebug("sessionString: {0}", sessionString);
-            
+            // var sessionString = session.ToString();
+            // _logger.LogDebug("sessionString: {0}", sessionString);
+
+            var deviceId = session.DeviceId;
+            var itemId = session.NowPlayingItem.Id;
             var position = session.PlayState.PositionTicks / TimeSpan.TicksPerSecond;
-            _logger.LogTrace("Playback position is {Position}", position);
+            _logger.LogDebug("Playback position is " + position.ToString());
         }
     }
 
