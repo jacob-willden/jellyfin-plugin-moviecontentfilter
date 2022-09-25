@@ -106,8 +106,19 @@ public class FilterVideo : IServerEntryPoint
 
             var deviceId = session.DeviceId;
             var itemId = session.NowPlayingItem.Id;
-            var position = session.PlayState.PositionTicks / TimeSpan.TicksPerSecond;
-            _logger.LogDebug("Playback position is " + position.ToString());
+            var position = session.PlayState.PositionTicks / TimeSpan.TicksPerSecond; // in seconds
+            // _logger.LogDebug("Playback position is " + position.ToString());
+
+            int tagStart = 2;
+            int tagEnd = 4;
+
+            if (position < tagStart || position > tagEnd)
+            {
+                continue;
+            }
+            else {
+                _logger.LogDebug("Playback position is " + position.ToString());
+            }
         }
     }
 
