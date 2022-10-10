@@ -129,6 +129,18 @@ public class FilterVideo : IServerEntryPoint
                     TimeoutMs = 2000,
                 },
                 CancellationToken.None);
+                
+
+                _sessionManager.SendPlaystateCommand(
+                session.Id,
+                session.Id,
+                new PlaystateRequest()
+                {
+                    Command = PlaystateCommand.Seek,
+                    ControllingUserId = session.UserId.ToString("N"),
+                    SeekPositionTicks = tagEnd * TimeSpan.TicksPerSecond,
+                },
+                CancellationToken.None);
             }
         }
     }
