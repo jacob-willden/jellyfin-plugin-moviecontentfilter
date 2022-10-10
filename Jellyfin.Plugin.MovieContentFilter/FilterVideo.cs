@@ -118,6 +118,17 @@ public class FilterVideo : IServerEntryPoint
             }
             else {
                 _logger.LogDebug("Playback position is " + position.ToString());
+
+                _sessionManager.SendMessageCommand(
+                session.Id,
+                session.Id,
+                new MessageCommand()
+                {
+                    Header = string.Empty,      // some clients require header to be a string instead of null
+                    Text = "Notice: The performance of the motion picture is altered from the performance intended by the director or copyright holder of the motion picture.",
+                    TimeoutMs = 2000,
+                },
+                CancellationToken.None);
             }
         }
     }
