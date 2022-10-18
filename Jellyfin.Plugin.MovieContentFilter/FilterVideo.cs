@@ -125,10 +125,10 @@ public class FilterVideo : IServerEntryPoint
                 new MessageCommand()
                 {
                     Header = string.Empty,      // some clients require header to be a string instead of null
-                    Text = "Notice: The performance of the motion picture is altered from the performance intended by the director or copyright holder of the motion picture.",
+                    Text = "Skipping",
                     TimeoutMs = 2000,
                 },
-                CancellationToken.None);
+                CancellationToken.None); // Removing this SendMessageCommand seems to break the SendPlaystateCommand?
                 
 
                 _sessionManager.SendPlaystateCommand(
