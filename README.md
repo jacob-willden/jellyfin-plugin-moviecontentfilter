@@ -10,6 +10,8 @@ Jellyfin plugin for Movie Content Filter, to allow users to skip objectionable c
 
 This project is in very early development right now, and there are many features to add (and some bugs to fix). It is built on the source code from the open-source VideoSkip browser extension and the open-source Intro Skipper plugin for Jellyfin (linked below). The source code is freely available to copy and build on, released under the GNU General Public License (GNU GPL), version 3. (I'm currently figuring out if I can distribute the plugin under version 3 or later.)
 
+`SPDX-License-Identifier: GPL-3.0-only`
+
 [VideoSkip Source Code Link](https://github.com/fruiz500/VideoSkip-extension/)
 
 [Intro Skipper Source Code Link](https://github.com/ConfusedPolarBear/intro-skipper)
