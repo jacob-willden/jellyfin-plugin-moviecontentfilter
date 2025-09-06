@@ -1,8 +1,8 @@
 # jellyfin-plugin-moviecontentfilter
 
-Jellyfin plugin for Movie Content Filter, to allow users to skip objectionable content in videos, based on their preferences.
+GitHub mirror for the Jellyfin plugin for Movie Content Filter, to allow users to skip objectionable content in videos, based on their preferences.
 
-[Project Source Code Link](https://github.com/jacob-willden/jellyfin-plugin-moviecontentfilter/)
+[Project Source Code](https://codeberg.org/jacobwillden/jellyfin-plugin-moviecontentfilter)
 
 [Movie Content Filter Website](https://www.moviecontentfilter.com/)
 
