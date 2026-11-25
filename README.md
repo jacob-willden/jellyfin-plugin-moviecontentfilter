@@ -2,9 +2,9 @@
 
 GitHub mirror for the Jellyfin plugin for Movie Content Filter, to allow users to skip objectionable content in videos, based on their preferences.
 
-[Project Source Code](https://codeberg.org/jacobwillden/jellyfin-plugin-moviecontentfilter)
-
 [Movie Content Filter Website](https://www.moviecontentfilter.com/)
+
+Note: This repository will continue to be [available on Codeberg](https://codeberg.org/jacobwillden/jellyfin-plugin-moviecontentfilter) after I delete my GitHub account, and I intend to continue developing it.
 
 ## General Information
 
